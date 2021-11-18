@@ -12,13 +12,13 @@ class Data
     public function dniTygodnia(): array
     {
         return [
-            'Poniedziałek',
-            'Wtorek',
-            'Środa',
-            'Czwartek',
-            'Piątek',
-            'Sobota',
-            'Niedziela',
+            'Poniedziałek', 
+            'Wtorek', 
+            'Środa', 
+            'Czwartek', 
+            'Piątek', 
+            'Sobota', 
+            'Niedziela'
         ];
     }
 }

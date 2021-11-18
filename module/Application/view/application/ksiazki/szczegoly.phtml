@@ -1,0 +1,39 @@
+<style>
+  table{
+      border-collapse: collapse;
+  }
+  th{
+    vertical-align: top;
+    width: 100px;
+  }
+  tr {
+    border-bottom: 1px solid black;
+  }
+</style>
+<h1>Szczegóły</h1>
+<table>
+<tr>
+    <th>Id:</th>
+    <td><?=$ksiazka['id']?></td>
+</tr>
+<tr>
+    <th>Id autora:</th>
+    <td><?=$ksiazka['id_autora']?></td>
+</tr>
+<tr>
+    <th>Tytuł:</th>
+    <td><?=$ksiazka['tytul']?></td>
+</tr>
+<tr>
+    <th>Opis:</th>
+    <td><?=$ksiazka['opis']?></td>
+</tr>
+<tr>
+    <th>Cena:</th>
+    <td><?=$ksiazka['cena']?></td>
+</tr>
+<tr>
+    <th>Liczba stron:</th>
+    <td><?=$ksiazka['liczba_stron']?></td>
+</tr>
+</table>

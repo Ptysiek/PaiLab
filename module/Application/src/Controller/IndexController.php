@@ -10,20 +10,21 @@ use Laminas\View\Model\ViewModel;
 
 class IndexController extends AbstractActionController
 {
-    public function __construct(public Data $data)
-    {
-    }
 
     public function indexAction()
     {
-        return new ViewModel();
+        return [
+            'naglowek' => 'Testowy nagłówek'
+        ];
     }
 
     public function dataAction()
     {
+        $data = new Data();
+
         return [
-            'dzisiaj' => $this->data->dzisiaj(),
-            'dni_tygodnia' => $this->data->dniTygodnia(),
+            'dzisiaj' => $data->dzisiaj(),
+            'dni_tygodnia' => $data->dniTygodnia(),
         ];
     }
 }

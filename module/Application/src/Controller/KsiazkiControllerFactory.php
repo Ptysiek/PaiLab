@@ -14,6 +14,6 @@ class KsiazkiControllerFactory implements FactoryInterface
         $ksiazka = $container->get(Ksiazka::class);
         $ksiazkaForm = $container->get(KsiazkaForm::class);
 
-        return new KsiazkiController($ksiazka, $ksiazkaForm);
+        return new KsiazkiController($ksiazka, $ksiazkaForm,);
     }
 }
