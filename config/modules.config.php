@@ -20,5 +20,11 @@ return [
     'Laminas\Db',
     'Laminas\Router',
     'Laminas\Validator',
+    'Laminas\Navigation',
+    'Laminas\Serializer',
+    'Laminas\Paginator',
+    'Laminas\Log',
+    'TwbsHelper',
+    'Nieruchomosci',
     'Application',
 ];

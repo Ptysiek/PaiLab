@@ -46,6 +46,13 @@
       <path value="$PROJECT_DIR$/vendor/laminas/laminas-authentication" />
       <path value="$PROJECT_DIR$/vendor/nikic/php-parser" />
       <path value="$PROJECT_DIR$/vendor/laminas/laminas-zendframework-bridge" />
+      <path value="$PROJECT_DIR$/vendor/laminas/laminas-navigation" />
+      <path value="$PROJECT_DIR$/vendor/laminas/laminas-progressbar" />
+      <path value="$PROJECT_DIR$/vendor/laminas/laminas-serializer" />
+      <path value="$PROJECT_DIR$/vendor/laminas/laminas-paginator" />
+      <path value="$PROJECT_DIR$/vendor/laminas/laminas-log" />
+      <path value="$PROJECT_DIR$/vendor/neilime/zf-twbs-helper-module" />
+      <path value="$PROJECT_DIR$/vendor/psr/log" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="8.0" />
