@@ -58,6 +58,10 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/laminas/laminas-progressbar" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/laminas/laminas-serializer" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/neilime/zf-twbs-helper-module" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/paragonie/random_compat" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/myclabs/deep-copy" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/setasign/fpdi" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/mpdf/mpdf" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

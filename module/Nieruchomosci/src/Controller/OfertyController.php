@@ -57,4 +57,20 @@ class OfertyController extends AbstractActionController
 
         return ['oferta' => $daneOferty];
     }
+
+    public function drukujAction()
+    {
+        $oferta = $this->oferta->pobierz($this->params('id'));
+
+        if ($oferta) {
+            $vm = new ViewModel(['oferta' => $oferta]);
+            $vm->setTemplate('nieruchomosci/oferty/drukuj');
+            $html = $this->phpRenderer->render($vm);
+
+            $mpdf = new Mpdf(['tempDir' => __DIR__ . '/../../../../data/mpdf']);
+            $mpdf->WriteHTML($html);
+            $mpdf->Output('oferta.pdf', 'D');
+        }
+        return $this->getResponse();
+    }
 }

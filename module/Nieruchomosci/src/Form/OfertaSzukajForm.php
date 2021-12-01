@@ -44,31 +44,17 @@ class OfertaSzukajForm extends Form
             ],
         ]);
         $this->add([
-            'name' => 'cena_od',
+            'name' => 'cena',
             'type' => 'Text',
             'options' => [
-                'label' => 'Cena od',
+                'label' => 'Cena',
             ],
         ]);
         $this->add([
-            'name' => 'cena_do',
+            'name' => 'powierzchnia',
             'type' => 'Text',
             'options' => [
-                'label' => 'do',
-            ],
-        ]);
-        $this->add([
-            'name' => 'powierzchnia_od',
-            'type' => 'Text',
-            'options' => [
-                'label' => 'Powierzchnia od',
-            ],
-        ]);
-        $this->add([
-            'name' => 'powierzchnia_do',
-            'type' => 'Text',
-            'options' => [
-                'label' => 'do',
+                'label' => 'Powierzchnia',
             ],
         ]);
         $this->add([

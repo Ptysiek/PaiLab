@@ -33,26 +33,13 @@ class Oferta implements DbAdapter\AdapterAwareInterface
         if (!empty($szukaj['numer'])) {
             $select->where(['numer' => $szukaj['numer']]);
         }
-        // Konfiguracja wyszukiawnia w przedziale - powierzchnia
-        if (!empty($szukaj['powierzchnia_od']) && !empty($szukaj['powierzchnia_do'])) {
-            $select->where->between(['powierzchnia'],[$szukaj['powierzchnia_od']],[$szukaj['powierzchnia_do']]);
+        if (!empty($szukaj['powierzchnia'])) {
+            $select->where(['powierzchnia' => $szukaj['powierzchnia']]);
         }
-        else if(!empty($szukaj['powierzchnia_od'])){
-            $select->where->greaterThanOrEqualTo(['powierzchnia'],[$szukaj['powierzchnia_od']]);
+        if (!empty($szukaj['cena'])) {
+            $select->where(['cena' => $szukaj['cena']]);
         }
-        else if(!empty($szukaj['powierzchnia_do'])){
-            $select->where->lessThanOrEqualTo(['powierzchnia'],[$szukaj['powierzchnia_do']]);
-        }
-        // Konfiguracja wyszukiawnia w przedziale - cena
-        if (!empty($szukaj['cena_od']) && !empty($szukaj['cena_do'])) {
-            $select->where->between(['cena'],[$szukaj['cena_od']],[$szukaj['cena_do']]);
-        }
-        else if(!empty($szukaj['cena_od'])){
-            $select->where->greaterThanOrEqualTo(['cena'],[$szukaj['cena_od']]);
-        }
-        else if(!empty($szukaj['cena_do'])){
-            $select->where->lessThanOrEqualTo(['cena'],[$szukaj['cena_do']]);
-        }
+
         $paginatorAdapter = new DbSelect($select, $dbAdapter);
         $paginator = new Paginator($paginatorAdapter);
         return $paginator;

@@ -2,6 +2,7 @@
 
 namespace Nieruchomosci;
 
+use Nieruchomosci\Model\Koszyk;
 use Laminas\ModuleManager\Feature\ConfigProviderInterface;
 use Laminas\ModuleManager\Feature\InitProviderInterface;
 use Laminas\ModuleManager\ModuleManagerInterface;
@@ -19,6 +20,10 @@ class Module implements ConfigProviderInterface, InitProviderInterface
         $manager->getEventManager()->getSharedManager()->attach(__NAMESPACE__,
             MvcEvent::EVENT_DISPATCH, function(MvcEvent $e) {
                 $e->getTarget()->layout('layout/nieruchomosci');
+                $e->getViewModel()->liczba_ofert = $e->getApplication()
+                    ->getServiceManager()
+                    ->get(Koszyk::class)
+                    ->liczbaOfert();
             }
         );
     }
