@@ -17,6 +17,8 @@ use Laminas\Router\Http\Literal;
 use Laminas\Router\Http\Segment;
 use Laminas\ServiceManager\AbstractFactory\ReflectionBasedAbstractFactory;
 use Laminas\ServiceManager\Factory\InvokableFactory;
+use Application\Model\Data;
+use Laminas\Mvc\Controller\LazyControllerAbstractFactory;
 
 return [
     'router' => [
@@ -26,7 +28,7 @@ return [
                 'options' => [
                     'route' => '/',
                     'defaults' => [
-                        'controller' => IndexController::class,
+                        'controller' => Controller\IndexController::class,
                         'action' => 'index',
                     ],
                 ],
@@ -36,7 +38,7 @@ return [
                 'options' => [
                     'route' => '/application[/:action]',
                     'defaults' => [
-                        'controller' => IndexController::class,
+                        'controller' => Controller\IndexController::class,
                         'action' => 'index',
                     ],
                 ],
@@ -65,17 +67,16 @@ return [
     ],
     'controllers' => [
         'factories' => [
-            IndexController::class => InvokableFactory::class,
+            Controller\IndexController::class => LazyControllerAbstractFactory::class,
             KsiazkiController::class => KsiazkiControllerFactory::class,
-            AutorzyController::class => AutorzyControllerFactory::class,
         ],
     ],
     'service_manager' => [
         'factories' => [
+            Data::class => InvokableFactory::class,
             Ksiazka::class => InvokableFactory::class,
             Autor::class => InvokableFactory::class,
             KsiazkaForm::class => ReflectionBasedAbstractFactory::class,
-            AutorForm::class => ReflectionBasedAbstractFactory::class,
         ],
     ],
     'view_manager' => [

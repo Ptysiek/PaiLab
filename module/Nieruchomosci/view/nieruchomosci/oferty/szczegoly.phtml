@@ -1,29 +1,47 @@
 <?php
-    $typ_nieruchomosci = "";
-    if(($oferta->typ_nieruchomosci) == 'M') $typ_nieruchomosci = "mieszkanie";
-    else if(($oferta->typ_nieruchomosci) == 'D') $typ_nieruchomosci = "dom";
-    else $typ_nieruchomosci = "grunt";
-
-    $typ_oferty = "";
-    if(($oferta->typ_oferty) == 'S') $typ_oferty = "sprzedaż";
-    else $typ_oferty = "wynajem";
+$this->headScript()->appendFile($this->basePath('/js/zapytanie.js'), 'text/javascript', ['defer' => true]);
+$tresc = new \Laminas\Form\Element\Textarea('tresc');
+$tresc->setAttributes(['rows' => 5]);
+$tresc->setValue("Jestem zainteresowany ofertą numer $oferta[numer]. \nProszę o kontakt.");
 ?>
+
 <h2>Szczegóły oferty <?= $oferta->numer ?></h2>
-<table style="width:100%">
-  <tr>
-    <th>Typ oferty:</th>
-    <th><?=$typ_oferty?></th>
-  </tr>
-  <tr>
-    <th>Typ nieruchomości::</th>
-    <th><?=$typ_nieruchomosci?></th>
-  </tr>
-  <tr>
-    <th>Powierzchnia:</th>
-    <th><?=$oferta->powierzchnia?></th>
-  </tr>
-  <tr>
-    <th>Cena:</th>
-    <th><?=$oferta->cena?></th>
-  </tr>
-</table>
+
+<p>
+    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modalZapytanie">
+        Wyślij zapytanie
+    </button>
+</p>
+
+<div
+        class="modal fade"
+        id="modalZapytanie"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+>
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Zapytanie</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form
+                        method="post"
+                        action="<?= $this->url('nieruchomosci/zapytanie', ['action' => 'wyslij'], null, true) ?>"
+                        id="formZapytanie"
+                >
+                    <?= $this->formElement($tresc) ?>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="btnWyslij">Wyślij</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Zamknij</button>
+            </div>
+        </div>
+    </div>
+</div>

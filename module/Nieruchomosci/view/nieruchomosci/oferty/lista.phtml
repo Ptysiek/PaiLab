@@ -1,11 +1,11 @@
 <?php
-$this->headScript()->appendFile($this->basePath('/js/oferty.js'));
+$this->headScript()->appendFile($this->basePath('/js/oferty.js'), 'text/javascript', ['defer' => true]);
 $form->setAttribute('action', $this->url('nieruchomosci/oferty', []))
 ?>
 <?= $this->form()->openTag($form) ?>
-<h2 class="my-3">Lista ofert</h2>
-<table class="table table-striped">
-    <thead>
+    <h2 class="my-3">Lista ofert</h2>
+    <table class="table table-striped">
+        <thead>
         <tr>
             <th></th>
             <th><?= $form->get('typ_oferty')->getLabel() ?></th>
@@ -24,8 +24,8 @@ $form->setAttribute('action', $this->url('nieruchomosci/oferty', []))
             <th><?= $this->formElement($form->get('cena')) ?></th>
             <th><?= $this->formSubmit($form->get('szukaj')) ?></th>
         </tr>
-    </thead>
-    <tbody>
+        </thead>
+        <tbody>
         <?php foreach ($oferty as $of): ?>
             <tr>
                 <td><?= $of->id ?></td>
@@ -34,19 +34,31 @@ $form->setAttribute('action', $this->url('nieruchomosci/oferty', []))
                 <td><?= $of->numer ?></td>
                 <td><?= $of->powierzchnia ?></td>
                 <td><?= $of->cena ?></td>
-                <td>
-                    <a href="<?= $this->url('nieruchomosci/oferty', ['action' => 'szczegoly', 'id' => $of->id]) ?>" title="szczegóły"><i class="fas fa-folder-open"></i></a>&nbsp;
-                    <a href="<?= $this->url('nieruchomosci/koszyk', ['action' => 'dodaj', 'id' => $of->id]) ?>" title="dodaj do koszyka" class="aDodajDoKoszyka"><i class="fas fa-cart-plus"></i></a>&nbsp;
-                    <a href="<?= $this->url('nieruchomosci/oferty', ['action' => 'drukuj', 'id' => $of->id]) ?>" title="drukuj"><i class="fas fa-print"></i></a>
+                <td class="text-nowrap">
+                    <a
+                            href="<?= $this->url('nieruchomosci/oferty', ['action' => 'szczegoly', 'id' => $of->id]) ?>"
+                            title="szczegóły"
+                    ><i class="fas fa-folder-open"></i></a>
+                    &nbsp;
+                    <a
+                            href="<?= $this->url('nieruchomosci/koszyk', ['action' => 'dodaj', 'id' => $of->id]) ?>"
+                            title="dodaj do koszyka"
+                            class="aDodajDoKoszyka"
+                    ><i class="fas fa-cart-plus"></i></a>
+                    &nbsp;
+                    <a
+                            href="<?= $this->url('nieruchomosci/oferty', ['action' => 'drukuj', 'id' => $of->id]) ?>"
+                            title="drukuj"
+                    ><i class="fas fa-print"></i></a>
                 </td>
             </tr>
         <?php endforeach; ?>
-    </tbody>
-</table>
+        </tbody>
+    </table>
 <?= $this->paginationControl(
-    $oferty, 
-    'sliding', 
-    ['partial/paginator.phtml', 'Nieruchomosci'], 
+    $oferty,
+    'sliding',
+    ['partial/paginator.phtml', 'Nieruchomosci'],
     ['route' => 'nieruchomosci/oferty', 'parametry' => $parametry]
 )
 ?>

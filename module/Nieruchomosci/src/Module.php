@@ -7,8 +7,11 @@ use Laminas\ModuleManager\Feature\ConfigProviderInterface;
 use Laminas\ModuleManager\Feature\InitProviderInterface;
 use Laminas\ModuleManager\ModuleManagerInterface;
 use Laminas\Mvc\MvcEvent;
+use Laminas\Session\SessionManager;
+use Laminas\EventManager\EventInterface;
+use Laminas\ModuleManager\Feature\BootstrapListenerInterface;
 
-class Module implements ConfigProviderInterface, InitProviderInterface
+class Module implements ConfigProviderInterface, InitProviderInterface, BootstrapListenerInterface
 {
     public function getConfig()
     {
@@ -26,5 +29,12 @@ class Module implements ConfigProviderInterface, InitProviderInterface
                     ->liczbaOfert();
             }
         );
+    }
+
+    public function onBootstrap(EventInterface $e)
+    {
+        // uruchom sesje
+        $session = new SessionManager();
+        $session->start();
     }
 }

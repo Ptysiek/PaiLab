@@ -27,4 +27,6 @@ return [
     'TwbsHelper',
     'Nieruchomosci',
     'Application',
+    'Laminas\Mail',
+    'Laminas\Paginator\Adapter\LaminasDb',
 ];

@@ -16,10 +16,28 @@ return [
     'db' => [
         'driver' => 'Pdo',
         'dsn' => 'mysql:dbname=pai;host=localhost',
+//        'dsn' => 'mysql:dbname=pai;host=db', // docker
         'driver_options' => [
             PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'UTF8\''
         ],
         'username' => 'root',
         'password' => '',
+//        'password' => 'admin', // docker
+    ],
+    'mail' => [
+        'name' => 'imap.wit.edu.pl',
+        'host' => 'imap.wit.edu.pl',
+        'port' => 465,
+        'connection_class' => 'login',
+        'connection_config' => [
+            'username' => 'wprowadz_login',
+            'password' => 'wprowadz_haslo',
+            'ssl' => 'ssl',
+        ],
+        'from' => [
+            'email' => 'konto@wit.edu.pl',
+            'name' => 'Administrator strony',
+        ],
+        'to' => 'konto@wit.edu.pl',
     ],
 ];

@@ -11,6 +11,10 @@ use Laminas\Navigation\Service\DefaultNavigationFactory;
 use Laminas\Router\Http\Literal;
 use Laminas\Router\Http\Segment;
 use Laminas\ServiceManager\Factory\InvokableFactory;
+use Laminas\ServiceManager\AbstractFactory\ReflectionBasedAbstractFactory;
+use Nieruchomosci\Controller\ZapytanieController;
+use Nieruchomosci\Model\Zapytanie;
+use Nieruchomosci\Model\ZapytanieFactory;
 
 return [
     'router' => [
@@ -38,25 +42,35 @@ return [
                             'route' => 'koszyk[/:action[/:id]]',
                             'defaults' => [
                                 'controller' => KoszykController::class,
-                                'action' => 'lista',
+                            ],
+                        ],
+                    ],
+                    'zapytanie' => [
+                        'type' => Segment::class,
+                        'options' => [
+                            'route' => 'zapytanie[/:action[/:id]]',
+                            'defaults' => [
+                                'controller' => ZapytanieController::class,
                             ],
                         ],
                     ],
                 ],
-            ]
-        ]
+            ],
+        ],
     ],
     'controllers' => [
         'factories' => [
             OfertyController::class => LazyControllerAbstractFactory::class,
             KoszykController::class => LazyControllerAbstractFactory::class,
+            ZapytanieController::class => LazyControllerAbstractFactory::class,
         ],
     ],
     'service_manager' => [
         'factories' => [
             'navigation' => DefaultNavigationFactory::class,
-            Oferta::class => InvokableFactory::class,
+            Oferta::class => ReflectionBasedAbstractFactory::class,
             Koszyk::class => InvokableFactory::class,
+            Zapytanie::class => ZapytanieFactory::class,
         ],
     ],
     'view_manager' => [

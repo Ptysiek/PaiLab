@@ -26,7 +26,9 @@
     "laminas/laminas-navigation": "^2.10",
     "laminas/laminas-paginator": "^2.9",
     "neilime/zf-twbs-helper-module": "^3.3",
-    "mpdf/mpdf": "^8.0"
+    "mpdf/mpdf": "^8.0",
+    "laminas/laminas-paginator-adapter-laminasdb": "^1.0",
+    "laminas/laminas-mail": "^2.15"
   },
   "autoload": {
     "psr-4": {
@@ -65,7 +67,7 @@
     "test": "Run unit tests."
   },
   "require-dev": {
-      "laminas/laminas-developer-tools": "^2.1.1",      
-      "symfony/var-dumper": "^5.1"
+    "laminas/laminas-developer-tools": "^2.1.1",      
+    "symfony/var-dumper": "^5.1"
   }
 }
