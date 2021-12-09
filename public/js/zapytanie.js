@@ -1,20 +1,28 @@
-document.querySelector('#btnWyslij').addEventListener('click', async (e) => {
-    e.preventDefault()
-
-    const form = document.querySelector('#formZapytanie')
-    const action = form.getAttribute('action')
-
-    const resp = await fetch(action, {
-        method:'post',
-        body: new FormData(form)
+$(function() {
+	$('#btnWyslij').click(async function(e) {
+        e.preventDefault()
+		const $frm = $('#formZapytanie')
+		const resp = await $.post($frm.attr('action'), $frm.serializeArray());
+        if (resp === 'ok') {
+            alert('Dziękujemy za wysłanie zapytania.')
+            $("textarea").val('')
+            $('#modalZapytanie').modal('hide')
+        } else {
+            alert("Wystąpił błąd")
+        }		
+		return false
     })
-    const text = await resp.text()
 
-    if (text === 'ok') {
-        alert("Dziękujemy za wysłanie zapytania.")
-        form.tresc.value = ''
-        $('#modalZapytanie').modal('hide')
-    } else {
-        alert('Wystąpił błąd')
-    }
+    $('#btnWyslijPdf').click(async function(e) {
+        e.preventDefault()
+		const $frm = $('#formWyslijPdf')
+		const resp = await $.post($frm.attr('action'), $frm.serializeArray());
+        if(resp === 'ok') {
+            alert('Oferta została wysłana na podany email')
+            $('#modalZapytanie').modal('hide')
+        } else {
+            alert('Wystąpił błąd')
+        }		
+		return false
+	})
 })
